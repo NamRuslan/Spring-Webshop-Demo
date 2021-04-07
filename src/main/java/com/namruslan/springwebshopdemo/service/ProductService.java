@@ -5,8 +5,6 @@ import com.namruslan.springwebshopdemo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,14 +18,18 @@ public class ProductService {
     }
 
     public Product getProductById (Long id) {
-        return productRepository.getProducts().get(id.intValue() - 1);
+        return productRepository.findById(id).get();
     }
 
     public List<Product> getAllProducts () {
-        return productRepository.getProducts();
+        return productRepository.findAll();
     }
 
     public void deleteProductById (Long id) {
         productRepository.deleteById(id);
+    }
+
+    public Product getProductByTitle(String title) {
+        return productRepository.findOneByTitle(title);
     }
 }

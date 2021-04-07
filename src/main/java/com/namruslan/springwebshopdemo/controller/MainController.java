@@ -53,4 +53,12 @@ public class MainController {
                               @RequestParam("number") Long number) {
         return "S/N: " + serial + " / " + number;
     }
+
+    @GetMapping("/find_by_title")
+    public String byTitle(Model model, @RequestParam("title") String title) {
+        Product selectedProduct = productService.getProductByTitle(title);
+        model.addAttribute("selectedProduct", selectedProduct);
+        return "details";
+    }
+
 }
