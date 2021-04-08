@@ -1,5 +1,6 @@
 package com.namruslan.springwebshopdemo.utils;
 
+import com.namruslan.springwebshopdemo.entities.OrderItem;
 import com.namruslan.springwebshopdemo.entities.Product;
 import com.namruslan.springwebshopdemo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import java.util.List;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShoppingCart {
 
+    private List<OrderItem> items;
+
     private ProductService productService;
 
     @Autowired
@@ -23,19 +26,19 @@ public class ShoppingCart {
         this.productService = productService;
     }
 
-    private List<Product> products;
-
-    public List<Product> getProducts() {
-        return products;
+    public List<OrderItem> getItems() {
+        return items;
     }
 
     @PostConstruct
     public void init() {
-        products = new ArrayList<>();
+        items = new ArrayList<>();
     }
 
     public void addProductById(Long id) {
         Product product = productService.getProductById(id);
-        products.add(product);
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProduct(product);
+        items.add(orderItem);
     }
 }
