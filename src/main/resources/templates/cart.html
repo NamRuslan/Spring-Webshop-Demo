@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 
 <head>
     <meta charset="utf-8"/>
@@ -24,8 +26,6 @@
             <td>ID</td>
             <td>Title</td>
             <td>Price</td>
-<!--            <td></td>-->
-<!--            <td></td>-->
         </tr>
         </thead>
         <tbody>
@@ -33,12 +33,13 @@
             <td th:text="${item.product.id}"/>
             <td th:text="${item.product.title}"/>
             <td th:text="${item.product.price}"/>
-<!--            <td><a class="btn btn-secondary" th:href="@{'/details/' + ${item.product.id}}">Info</a></td>-->
-<!--            <td><a class="btn btn-danger" th:href="@{'/details/delete/' + ${product.id}}">Delete</a></td>-->
         </tr>
         </tbody>
     </table>
-    <a class="btn btn-success" th:href="@{/cart/create_order}" >Make order</a>
+    <div>
+        <a class="btn btn-success"  th:href="@{/cart/create_order}">Make order</a>
+        <small class="from-text text-danger" sec:authorize="isAnonymous()">Login or register first</small>
+    </div>
 </div>
 </body>
 </html>
