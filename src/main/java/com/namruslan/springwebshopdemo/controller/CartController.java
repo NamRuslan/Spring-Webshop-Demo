@@ -47,6 +47,7 @@ public class CartController {
     @GetMapping("/create_order")
     public String createOrder(Principal principal) {
 
+        if (principal == null) return "redirect:/cart";
         Order order = new Order();
         order.setItems(new ArrayList<>());
         order.setUsername(principal.getName());
