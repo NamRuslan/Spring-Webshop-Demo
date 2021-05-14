@@ -11,13 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.sql.DataSource;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-//    private DataSource dataSource;
 
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -32,11 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void setPasswordEncoder(BCryptPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
-
-//    @Autowired
-//    public void setDataSource(DataSource dataSource) {
-//        this.dataSource = dataSource;
-//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
