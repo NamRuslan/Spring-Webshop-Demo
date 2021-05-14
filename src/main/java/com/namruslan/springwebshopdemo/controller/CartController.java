@@ -33,14 +33,13 @@ public class CartController {
 
     @GetMapping("")
     public String showCart(Model model) {
-        model.addAttribute("items", cart.getItems());
+        model.addAttribute("items", cart.getView());
         return "cart";
     }
 
     @GetMapping("/add/{id}")
     public String addToCart(Model model, @PathVariable("id") Long id) {
         cart.addProductById(id);
-//        model.addAttribute("items", cart.getItems());
         return "redirect:/shop";
     }
 
