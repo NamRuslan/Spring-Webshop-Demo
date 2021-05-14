@@ -1,6 +1,7 @@
 package com.namruslan.springwebshopdemo.controller;
 
 import com.namruslan.springwebshopdemo.entities.Order;
+import com.namruslan.springwebshopdemo.entities.OrderItem;
 import com.namruslan.springwebshopdemo.service.OrderService;
 import com.namruslan.springwebshopdemo.utils.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,12 @@ public class CartController {
         cart.getItems().clear();
         orderService.saveOrder(order);
         return "redirect:/shop";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteFromCart(@PathVariable("id")Long id) {
+        cart.deleteProductById(id);
+        return "redirect:/cart";
     }
 
 }

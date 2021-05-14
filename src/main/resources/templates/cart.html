@@ -28,6 +28,7 @@
             <td>Price</td>
             <td>Amount</td>
             <td>Summary price</td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
@@ -37,7 +38,7 @@
             <td th:text="${item.product.price}"/>
             <td th:text="${item.productCount}"/>
             <td th:text="${item.getTotalPrice()}"/>
-
+            <td><a class="btn btn-danger" th:href="@{'/cart/delete/' + ${item.product.id}}">Remove</a></td>
         </tr>
         </tbody>
     </table>

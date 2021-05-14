@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -46,5 +47,12 @@ public class ShoppingCart {
         OrderItem orderItem = new OrderItem();
         orderItem.setProduct(product);
         items.add(orderItem);
+    }
+
+    public void deleteProductById(Long id) {
+        items.stream()
+                .filter(oi -> oi.getProduct().getId().equals(id))
+                .findAny()
+                .ifPresent(oi -> items.remove(oi));
     }
 }

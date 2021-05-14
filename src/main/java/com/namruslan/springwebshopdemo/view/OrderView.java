@@ -16,6 +16,10 @@ public class OrderView {
         productCount++;
     }
 
+    public void decreaseCount() {
+        productCount--;
+    }
+
     public Product getProduct() {
         return product;
     }
