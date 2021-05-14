@@ -21,10 +21,6 @@ public class ProductService {
         return productRepository.findById(id).get();
     }
 
-    public List<Product> getAllProducts () {
-        return productRepository.findAll();
-    }
-
     public void deleteProductById (Long id) {
         productRepository.deleteById(id);
     }
@@ -32,4 +28,31 @@ public class ProductService {
     public Product getProductByTitle(String title) {
         return productRepository.findOneByTitle(title);
     }
+
+    public List<Product> getAllProducts () {
+        return productRepository.findAll();
+    }
+
+    public List<Product> getAllProductsDesc () {
+        return productRepository.findByOrderByIdDesc();
+    }
+
+    public List<Product> getAllProductsOrderByTitle () {
+        return productRepository.findByOrderByTitle();
+    }
+
+    public List<Product> getAllProductsOrderByTitleDesc () {
+        return productRepository.findByOrderByTitleDesc();
+    }
+
+    public List<Product> getAllProductsOrderByPrice () {
+        return productRepository.findByOrderByPrice();
+    }
+
+    public List<Product> getAllProductsOrderByPriceDesc () {
+        return productRepository.findByOrderByPriceDesc();
+    }
+
+
+
 }

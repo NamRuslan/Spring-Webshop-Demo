@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://ec2-54-155-35-88.eu-west-1.compute.amazonaws.com:5432/dfhmeivog9d25q?user=anrvczboneymzk&password=74f6de1568dfa61c978bd3729baf5195108fcb5805d19f5e097a8cc3c6f80a7f
+    url: jdbc:postgresql://ec2-54-72-155-238.eu-west-1.compute.amazonaws.com:5432/d6oc1cv9f88osi?user=tghoyweujecjer&password=5df9a358f61617b762725625c5df848a0e98c613634be56cba4edfa047d2a691
     driver-class-name: org.postgresql.Driver
     initialization-mode: never
   jpa:

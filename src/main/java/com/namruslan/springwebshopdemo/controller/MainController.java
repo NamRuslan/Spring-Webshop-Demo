@@ -27,20 +27,6 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/details/{id}")
-    public String detailsPage(Model model, @PathVariable("id") Long id) {
-        Product selectProduct = productService.getProductById(id);
-        model.addAttribute("selectedProduct", selectProduct);
-        return "details";
-    }
-
-    @GetMapping("/shop")
-    public String shopPage (Model model) {
-        List<Product> allProducts = productService.getAllProducts();
-        model.addAttribute("products", allProducts);
-        return "shop";
-    }
-
     @GetMapping("/details/delete/{id}")
     public String deleteProductById(@PathVariable("id") Long id) {
         productService.deleteProductById(id);
@@ -49,8 +35,8 @@ public class MainController {
 
     @GetMapping("/data")
     @ResponseBody
-    public String dataExample(@RequestParam("serial") Long serial,
-                              @RequestParam("number") Long number) {
+    public String dataExample(@RequestParam(value = "serial", required = false) Long serial,
+                              @RequestParam(value = "number", required = false) Long number) {
         return "S/N: " + serial + " / " + number;
     }
 
@@ -61,9 +47,52 @@ public class MainController {
         return "details";
     }
 
+    @GetMapping("/details/{id}")
+    public String detailsPage(Model model, @PathVariable("id") Long id) {
+        Product selectProduct = productService.getProductById(id);
+        model.addAttribute("selectedProduct", selectProduct);
+        return "details";
+    }
+
     @GetMapping("/login")
     public String loginPage(){
         return "login";
     }
 
+    @GetMapping("/shop")
+    public String shopPage (Model model,
+                            @RequestParam(value = "sort", required = false, defaultValue = "") String sort) {
+
+        List<Product> allProducts;
+
+        switch (sort) {
+
+            case "idDesc":
+                allProducts = productService.getAllProductsDesc();
+                break;
+
+            case "title":
+                allProducts = productService.getAllProductsOrderByTitle();
+                break;
+
+            case "titleDesc":
+                allProducts = productService.getAllProductsOrderByTitleDesc();
+                break;
+
+            case "price":
+                allProducts = productService.getAllProductsOrderByPrice();
+                break;
+
+            case "priceDesc":
+                allProducts = productService.getAllProductsOrderByPriceDesc();
+                break;
+
+            default:
+                allProducts = productService.getAllProducts();
+                break;
+        }
+
+        model.addAttribute("products", allProducts);
+        return "shop";
+    }
 }
