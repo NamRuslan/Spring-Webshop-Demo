@@ -22,15 +22,18 @@ public class ShoppingCart {
 
     private List<OrderItem> items;
 
-    private ProductService productService;
+    private final ProductService productService;
+
+    private final OrderViewUtil orderViewUtil;
 
     @Autowired
-    public ShoppingCart(ProductService productService) {
+    public ShoppingCart(ProductService productService, OrderViewUtil orderViewUtil) {
         this.productService = productService;
+        this.orderViewUtil = orderViewUtil;
     }
 
     public Collection<OrderView> getView() {
-        return OrderViewUtil.toView(items);
+        return orderViewUtil.toView(items);
     }
 
     public List<OrderItem> getItems() {

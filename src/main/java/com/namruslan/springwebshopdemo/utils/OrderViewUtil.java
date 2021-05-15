@@ -10,7 +10,7 @@ import java.util.*;
 @Component
 public class OrderViewUtil {
 
-    public static Collection<OrderView> toView(List<OrderItem> items) {
+    public Collection<OrderView> toView(List<OrderItem> items) {
 
         Map<Product, OrderView> map = new HashMap<>();
 
