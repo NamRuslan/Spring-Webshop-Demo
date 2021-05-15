@@ -11,11 +11,13 @@ Implemented:
 - Password encryption;
 - Making orders;
 - Orders are saved in database and assigned to certain user;
-- Front-end, using thymeleaf and html.
+- Front-end, using thymeleaf and html;
+- Heroku deploy.
 
 Tech stack:
 - Java 11;
 - Spring (Boot, Web, JPA, Security);
 - PostgreSQL;
 - Thymeleaf;
+- Heroku;
 - Lombok.
