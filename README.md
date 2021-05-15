@@ -1,5 +1,5 @@
-# Spring Web Shop Demo
-Web Shop demo project
+# Spring Webshop Demo
+Webshop demo project
 
 Started with webinar, then half of project did by myself.
 
