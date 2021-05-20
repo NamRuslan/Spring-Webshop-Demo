@@ -12,9 +12,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -32,7 +30,7 @@ public class ShoppingCart {
         this.orderViewUtil = orderViewUtil;
     }
 
-    public Collection<OrderView> getView() {
+    public List<OrderView> getView() {
         return orderViewUtil.toView(items);
     }
 
